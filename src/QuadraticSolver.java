@@ -58,10 +58,10 @@ public class QuadraticSolver {
             y = n / x;
         }
 
-        return CheckLong(x, n);
+        return checkLong(x, n);
     }
 
-    public static long CheckLong(long sqrt, long sqr) {
+    public static long checkLong(long sqrt, long sqr) {
         return (sqrt * sqrt == sqr) ? sqrt : -1;
     }
 
