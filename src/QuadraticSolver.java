@@ -15,10 +15,24 @@ public class QuadraticSolver {
         long q = Long.parseLong(args[1]);
 
         System.out.println(p * q);
-        long discriminant = p*p-4*q;
+        long discriminant = p*p - 4*q;
 
-        System.out.println(squareRoot(discriminant));
-        System.out.println("Ќет целых решений");
+        long sqrt = squareRoot(discriminant);
+
+        long x1, x2;
+
+        x1 = (-p + sqrt) / 2;
+        x2 = (-p - sqrt) / 2;
+
+        if (sqrt == -1) {
+            System.out.println("Ќет целых решений");
+        } else {
+
+
+
+            System.out.println(" вадратный корень из " + discriminant + " = " + sqrt);
+        }
+
     }
 
     /**
@@ -32,8 +46,29 @@ public class QuadraticSolver {
      *         провер€ть, что {@code n} - неотрицательное число, и возвращать
      *         {@code -1} в противном случае.
      */
-    static long squareRoot(long n) {
-        return 0;
+    public static long squareRoot(long n) {
+        if (n < 0)
+            return -1;
+
+        if (n == 0 || n == 1)
+            return n;
+
+        double x = n;
+        double y = 1; // y = n/xn
+        double epsilon = 0.000001; // “очность вычислени€
+
+        while (x - y > epsilon) {
+            x = (x + y) / 2;
+            y = n / x;
+        }
+
+        long longX = (long) x;
+        return (longX * longX == n) ? longX : -1;
+    }
+
+    public static long CheckLong(double a) {
+        long longX = (long) a;
+        return (longX * longX == a) ? longX : -1;
     }
 
 }
