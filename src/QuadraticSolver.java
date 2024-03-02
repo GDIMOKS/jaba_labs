@@ -18,6 +18,8 @@ public class QuadraticSolver {
 
         long sqrt = squareRoot(discriminant);
 
+        System.out.println();
+
         if (sqrt == -1) {
             System.out.println("Нет целых решений уравнения");
         } else {
@@ -27,7 +29,7 @@ public class QuadraticSolver {
             x2 = (-p - sqrt) / 2;
 
             System.out.println("Квадратный корень из дискриминанта " + discriminant + " = " + sqrt);
-            System.out.println("Корни уравнения x^2 " + (p > 0 ? (" + " + p) : (" - " + p*(-1)) ) + "x + " + q + " = 0 : x1 = " + x1 + ", x2 = " + x2);
+            System.out.println("Корни уравнения x^2 " + (p > 0 ? (" + " + p) : (" - " + p*(-1)) ) + "x + " + q + " = 0 : \nx1 = " + x1 + "\nx2 = " + x2);
         }
 
         System.out.println();
