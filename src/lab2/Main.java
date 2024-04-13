@@ -22,11 +22,11 @@ public class Main {
         Integer[] arrayMax = {3, 1, 4, 1, 5, 9, 2, 6};
         Double[] arrayMin = {-3d, 1d, 4d, 1d, 5d, 9d, 2d, 6d};
 
-        // Создаем экземпляры моноидов для операций максимума и минимума
+        // Создание экземпляров моноидов для операций максимума и минимума
         MonoidClass.IMonoid<Integer> maxMonoid = new MonoidClass.IntegerMaxMonoid();
         MonoidClass.IMonoid<Double> minMonoid = new MonoidClass.DoubleMinMonoid();
 
-        // Создаем деревья отрезков
+        // Создание деревьев отрезков
         SegmentTree<Integer> maxSegmentTree = new SegmentTree<>(arrayMax, maxMonoid);
         SegmentTree<Double> minSegmentTree = new SegmentTree<>(arrayMin, minMonoid);
 
@@ -35,15 +35,15 @@ public class Main {
 
         int left = 0;
         int right = 5;
-        // Выполняем запрос на дереве отрезков для операции максимума
+        // Выполнение запроса на дереве отрезков для операции максимума
         int maxResult = maxSegmentTree.query(left, right);
         System.out.println("Максимум на отрезке [" + left + ", " + right + "]: " + maxResult);
 
-        // Выполняем запрос на дереве отрезков для операции минимума
+        // Выполнение запроса на дереве отрезков для операции минимума
         double minResult = minSegmentTree.query(left, right);
         System.out.println("Минимум на отрезке [" + left + ", " + right + "]: " + minResult);
 
-        // Создаем экземпляр моноида для операции умножения
+        // Создание экземпляра моноида для операции умножения
         MonoidClass.IMonoid<BigInteger> multiplyMonoid = new MonoidClass.BigIntegerMultiplyMonoid();
 
         // Быстрое возведение числа в степень
@@ -51,7 +51,7 @@ public class Main {
         int exponent = 100;
         BigInteger result = FastBinaryAlgorithmClass.power(multiplyMonoid, base, exponent);
 
-        // Выводим результат
+        // Вывод результата
         System.out.println(base + " в степени " + exponent + " = " + result);
     }
 
@@ -66,12 +66,12 @@ public class Main {
         GroupClass.IGroup<Double> multiplicativeGroup = new GroupClass.DoubleMultipyGroup();
         System.out.println("Обратный элемент к " + value + " по умножению: " + multiplicativeGroup.inverse(value));
 
-        Double[] nums = {1d, 2d, 3d, 4d, 5d};
+        Double[] nums = {/*1d, 2d, 3d, 4d, 5d*/3d, 1d, 4d, 1d, 5d, 9d, 2d, 6d};
         GroupClass.IGroup<Double> additiveGroup2 = new GroupClass.DoubleAdditiveGroup();
         PrefixSumClass<Double> ps = new PrefixSumClass(nums, additiveGroup2);
 
-        // Примеры запросов на отрезке
-        System.out.println("Сумма элементов на отрезке [2, 4]: " + ps.rangeSum(2, 4, additiveGroup2));
+        // Вывод сумм на отрезках
+        System.out.println("Сумма элементов на отрезке [2, 5]: " + ps.rangeSum(2, 5, additiveGroup2));
         System.out.println("Сумма элементов на отрезке [0, 2]: " + ps.rangeSum(0, 2, additiveGroup2));
     }
 
@@ -81,7 +81,6 @@ public class Main {
         MonoidClass.IMonoid<Integer> multiplyMonoid = new MonoidClass.IntegerMultiplyMonoid();
         RingClass.Ring<Integer> integerRing = new RingClass.Ring<>(additiveGroup, multiplyMonoid);
 
-        // Пример использования кольца над целыми числами
         int a = 5;
         int b = 3;
         System.out.println("Пример использования кольца над целыми числами a =  " + a + ", b = " + b + ":");

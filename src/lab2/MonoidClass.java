@@ -9,6 +9,7 @@ public class MonoidClass {
         T combine(T a, T b); // Бинарная операция
     }
 
+    // Класс для моноида для максимальных целых значений
     public static class IntegerMaxMonoid implements IMonoid<Integer> {
         @Override
         public Integer identity() {
@@ -21,6 +22,7 @@ public class MonoidClass {
         }
     }
 
+    // Класс для моноида для минимальных вещественных значений
     public static class DoubleMinMonoid implements IMonoid<Double> {
         @Override
         public Double identity() {
@@ -33,10 +35,11 @@ public class MonoidClass {
         }
     }
 
+    // Класс для моноида по умножению больших целых значений
     public static class BigIntegerMultiplyMonoid implements IMonoid<BigInteger> {
         @Override
         public BigInteger identity() {
-            return BigInteger.valueOf(1); // Нейтральный элемент для умножения
+            return BigInteger.ONE; // Нейтральный элемент для умножения
         }
 
         @Override
@@ -45,6 +48,7 @@ public class MonoidClass {
         }
     }
 
+    // Класс для моноида по умножению целых значений
     public static class IntegerMultiplyMonoid implements IMonoid<Integer> {
         @Override
         public Integer identity() {

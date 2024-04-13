@@ -36,7 +36,10 @@ public class Polynomial<T> {
                     sb.append(coefficient);
                 }
                 if (i > 0) {
-                    sb.append("x^").append(i);
+                    if (i == 1)
+                        sb.append("x");
+                    else
+                        sb.append("x^").append(i);
                 } else {
                     sb.append("1");
                 }
