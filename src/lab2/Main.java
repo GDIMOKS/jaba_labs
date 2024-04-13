@@ -10,7 +10,7 @@ import static lab2.part2.Main.Lab2_2;
 public class Main {
 
     public static void  main(String[] args) {
-        Lab2_1();
+//        Lab2_1();
         Lab2_2();
     }
 }
