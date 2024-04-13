@@ -1,4 +1,4 @@
-package lab2.part2;
+package lab3;
 
 import java.util.Map;
 

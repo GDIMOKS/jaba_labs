@@ -1,5 +1,5 @@
-package lab2.part1;
-import lab2.part1.MonoidClass.*;
+package lab2;
+import lab2.MonoidClass.*;
 
 public class SegmentTree<T> {
         private T[] tree;

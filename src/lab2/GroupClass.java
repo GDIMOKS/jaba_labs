@@ -1,14 +1,14 @@
-package lab2.part1;
+package lab2;
 
-import lab2.part1.MonoidClass.*;
+import lab2.MonoidClass.*;
 
 public class GroupClass {
-    // РРЅС‚РµСЂС„РµР№СЃ РіСЂСѓРїРїС‹
+    // Интерфейс группы
     public interface IGroup<T> extends IMonoid<T> {
         T inverse(T a);
     }
 
-    // Р РµР°Р»РёР·Р°С†РёСЏ РіСЂСѓРїРїС‹ СЃРѕ СЃР»РѕР¶РµРЅРёРµРј
+    // Реализация группы со сложением
     public static class DoubleAdditiveGroup implements IGroup<Double> {
         @Override
         public Double identity() {
@@ -26,7 +26,7 @@ public class GroupClass {
         }
     }
 
-    // Р РµР°Р»РёР·Р°С†РёСЏ РіСЂСѓРїРїС‹ СЃРѕ СЃР»РѕР¶РµРЅРёРµРј
+    // Реализация группы со сложением
     public static class IntegerAdditiveGroup implements IGroup<Integer> {
         @Override
         public Integer identity() {
@@ -44,7 +44,7 @@ public class GroupClass {
         }
     }
 
-    // Р РµР°Р»РёР·Р°С†РёСЏ РіСЂСѓРїРїС‹ СЃ СѓРјРЅРѕР¶РµРЅРёРµРј
+    // Реализация группы с умножением
     public static class DoubleMultipyGroup implements IGroup<Double> {
         @Override
         public Double identity() {
@@ -62,21 +62,21 @@ public class GroupClass {
         }
     }
 
-    // РљР»Р°СЃСЃ РґР»СЏ РіСЂСѓРїРїС‹ РїРѕ СЃР»РѕР¶РµРЅРёСЋ Р±СѓР»РµРІС‹С… Р·РЅР°С‡РµРЅРёР№
+    // Класс для группы по сложению булевых значений
     public static class BooleanAdditiveGroup implements IGroup<Boolean> {
         @Override
         public Boolean combine(Boolean a, Boolean b) {
-            return a || b; // РћРїРµСЂР°С†РёСЏ СЃР»РѕР¶РµРЅРёСЏ - Р»РѕРіРёС‡РµСЃРєРѕРµ РР›Р
+            return a || b; // Операция сложения - логическое ИЛИ
         }
 
         @Override
         public Boolean identity() {
-            return false; // РќСѓР»РµРІРѕР№ СЌР»РµРјРµРЅС‚ - false
+            return false; // Нулевой элемент - false
         }
 
         @Override
         public Boolean inverse(Boolean a) {
-            return !a; // РћР±СЂР°С‚РЅС‹Р№ СЌР»РµРјРµРЅС‚ - РѕС‚СЂРёС†Р°РЅРёРµ
+            return !a; // Обратный элемент - отрицание
         }
     }
 }

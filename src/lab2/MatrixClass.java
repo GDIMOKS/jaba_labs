@@ -1,13 +1,13 @@
-package lab2.part1;
-import lab2.part1.RingClass.*;
+package lab2;
+import lab2.RingClass.*;
 
 import java.util.Arrays;
 
 public class MatrixClass<T> {
     private Ring<T> ring;
-    private T[][] data; // Р”РІСѓРјРµСЂРЅС‹Р№ РјР°СЃСЃРёРІ СЌР»РµРјРµРЅС‚РѕРІ РєРѕР»СЊС†Р°
+    private T[][] data; // Двумерный массив элементов кольца
 
-    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
+    // Конструктор класса
     public MatrixClass(Ring<T> ring, T[][] data) {
         this.ring = ring;
         this.data = data;
@@ -25,7 +25,7 @@ public class MatrixClass<T> {
         return data[row][col];
     }
 
-    // РњРµС‚РѕРґ РґР»СЏ СѓРјРЅРѕР¶РµРЅРёСЏ РјР°С‚СЂРёС†С‹ РЅР° СЃРєР°Р»СЏСЂ
+    // Метод для умножения матрицы на скаляр
     public void multiplyByScalar(T scalar) {
         for (int i = 0; i < getRowCount(); i++) {
             for (int j = 0; j < getColumnCount(); j++) {
@@ -34,7 +34,7 @@ public class MatrixClass<T> {
         }
     }
 
-    // РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РјР°С‚СЂРёС†С‹ РІ РІРёРґРµ СЃС‚СЂРѕРєРё
+    // Метод для вывода матрицы в виде строки
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

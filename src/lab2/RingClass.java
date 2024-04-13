@@ -1,6 +1,6 @@
-package lab2.part1;
-import lab2.part1.MonoidClass.*;
-import lab2.part1.GroupClass.*;
+package lab2;
+import lab2.MonoidClass.*;
+import lab2.GroupClass.*;
 
 public class RingClass {
 

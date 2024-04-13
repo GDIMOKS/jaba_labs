@@ -1,9 +1,9 @@
-package lab2.part1;
+package lab2;
 
 import java.util.List;
-import lab2.part1.RingClass.*;
+import lab2.RingClass.*;
 
-// РљР»Р°СЃСЃ РґР»СЏ РїРѕР»РёРЅРѕРјР° РЅР°Рґ РєРѕР»СЊС†РѕРј
+// Класс для полинома над кольцом
 public class Polynomial<T> {
     private final Ring<T> ring;
     private final List<T> coefficients;
@@ -13,16 +13,16 @@ public class Polynomial<T> {
         this.coefficients = coefficients;
     }
 
-    // РњРµС‚РѕРґ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° РїРѕ СЃС‚РµРїРµРЅРё
+    // Метод для получения коэффициента по степени
     public T getCoefficient(int degree) {
         if (degree < coefficients.size()) {
             return coefficients.get(degree);
         } else {
-            return ring.zero(); // РќСѓР»РµРІРѕР№ РєРѕСЌС„С„РёС†РёРµРЅС‚
+            return ring.zero(); // Нулевой коэффициент
         }
     }
 
-    // РњРµС‚РѕРґ РґР»СЏ РІС‹РІРѕРґР° РїРѕР»РёРЅРѕРјР° РІ РІРёРґРµ СЃС‚СЂРѕРєРё
+    // Метод для вывода полинома в виде строки
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
