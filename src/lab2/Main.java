@@ -1,7 +1,6 @@
 package lab2;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,17 +11,19 @@ import lab2.RingClass.*;
 public class Main {
 
     public static void Task1_1() {
-        // часть 1
         Integer[] arrayMax = {3, 1, 4, 1, 5, 9, 2, 6};
         Double[] arrayMin = {-3d, 1d, 4d, 1d, 5d, 9d, 2d, 6d};
 
         // Создаем экземпляры моноидов для операций максимума и минимума
-        Monoid<Integer> maxMonoid = new IntegerMaxMonoid();
-        Monoid<Double> minMonoid = new DoubleMinMonoid();
+        IMonoid<Integer> maxMonoid = new IntegerMaxMonoid();
+        IMonoid<Double> minMonoid = new DoubleMinMonoid();
 
         // Создаем деревья отрезков
         SegmentTree<Integer> maxSegmentTree = new SegmentTree<>(arrayMax, maxMonoid);
         SegmentTree<Double> minSegmentTree = new SegmentTree<>(arrayMin, minMonoid);
+
+        System.out.println("Дерево отрезков для моноида с взятием максимума:\n" + maxSegmentTree);
+        System.out.println("Дерево отрезков для моноида с взятием минимума:\n" + minSegmentTree);
 
         int left = 0;
         int right = 5;
@@ -35,7 +36,7 @@ public class Main {
         System.out.println("Минимум на отрезке [" + left + ", " + right + "]: " + minResult);
 
         // Создаем экземпляр моноида для операции умножения
-        Monoid<BigInteger> multiplyMonoid = new BigIntegerMultiplyMonoid();
+        IMonoid<BigInteger> multiplyMonoid = new BigIntegerMultiplyMonoid();
 
         // Быстрое возведение числа в степень
         BigInteger base = BigInteger.valueOf(2);
@@ -49,16 +50,16 @@ public class Main {
     public static void Task1_2() {
 
         // Группа со сложением
-        Group<Double> additiveGroup = new DoubleAdditiveGroup();
+        IGroup<Double> additiveGroup = new DoubleAdditiveGroup();
         double value = 5;
         System.out.println("Обратный элемент к " + value + " по сложению: " + additiveGroup.inverse(value));
 
         // Группа с умножением
-        Group<Double> multiplicativeGroup = new DoubleMultipyGroup();
+        IGroup<Double> multiplicativeGroup = new DoubleMultipyGroup();
         System.out.println("Обратный элемент к " + value + " по умножению: " + multiplicativeGroup.inverse(value));
 
         Double[] nums = {1d, 2d, 3d, 4d, 5d};
-        Group<Double> additiveGroup2 = new DoubleAdditiveGroup();
+        IGroup<Double> additiveGroup2 = new DoubleAdditiveGroup();
         PrefixSumClass<Double> ps = new PrefixSumClass(nums, additiveGroup2);
 
         // Примеры запросов на отрезке
@@ -68,8 +69,8 @@ public class Main {
 
     public static void Task1_3() {
         // Кольцо над целыми числами
-        Group<Integer> additiveGroup = new IntegerAdditiveGroup();
-        Monoid<Integer> multiplyMonoid = new IntegerMultiplyMonoid();
+        IGroup<Integer> additiveGroup = new IntegerAdditiveGroup();
+        IMonoid<Integer> multiplyMonoid = new IntegerMultiplyMonoid();
         Ring<Integer> integerRing = new Ring<>(additiveGroup, multiplyMonoid);
 
         // Пример использования кольца над целыми числами
@@ -79,8 +80,8 @@ public class Main {
         integerRing.print(a, b);
 
         // Кольцо над логическими значениями
-        Monoid<Boolean> booleanMonoid = new BooleanMultiplyMonoid();
-        Group<Boolean> booleanGroup = new BooleanAdditiveGroup();
+        IMonoid<Boolean> booleanMonoid = new BooleanMultiplyMonoid();
+        IGroup<Boolean> booleanGroup = new BooleanAdditiveGroup();
         Ring<Boolean> booleanRing = new Ring<>(booleanGroup, booleanMonoid);
 
         boolean x = true;
@@ -116,16 +117,18 @@ public class Main {
     public static void Lab2_1() {
         Task1_1();
         System.out.println("\n////////////////////////////////////\n");
-
         Task1_2();
-
         System.out.println("\n////////////////////////////////////\n");
-
         Task1_3();
+    }
+
+    public static void Lab2_2() {
+
     }
 
     public static void  main(String[] args) {
         Lab2_1();
+        Lab2_2();
 
     }
 }

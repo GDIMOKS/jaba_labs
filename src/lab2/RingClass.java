@@ -6,11 +6,11 @@ public class RingClass {
 
     // Класс кольца
     static class Ring<T> {
-        private Group<T> additiveGroup; // Группа по сложению
-        private Monoid<T> multiplyMonoid; // Моноид по умножению
+        private IGroup<T> additiveGroup; // Группа по сложению
+        private IMonoid<T> multiplyMonoid; // Моноид по умножению
 
         // Конструктор класса
-        public Ring(Group<T> additiveGroup, Monoid<T> multiplyMonoid) {
+        public Ring(IGroup<T> additiveGroup, IMonoid<T> multiplyMonoid) {
             this.additiveGroup = additiveGroup;
             this.multiplyMonoid = multiplyMonoid;
         }

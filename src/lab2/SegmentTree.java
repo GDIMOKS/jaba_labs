@@ -3,24 +3,33 @@ import lab2.MonoidClass.*;
 
 public class SegmentTree<T> {
         private T[] tree;
-        private Monoid<T> monoid;
+        private T[] array;
+        private IMonoid<T> monoid;
         private int size;
 
-        public SegmentTree(T[] array, Monoid<T> monoid) {
+        public SegmentTree(T[] array, IMonoid<T> monoid) {
+            this.array = array;
             this.monoid = monoid;
             size = array.length;
-            tree = (T[]) new Object[size * 2];
-            buildTree(array);
+
+            int height = (int) Math.ceil(Math.log(size) / Math.log(2));
+            int maxSize = 2 * (int) Math.pow(2, height) - 1;
+            tree = (T[]) new Object[maxSize];
+            buildTree(0, 0, size - 1);
         }
 
-        private void buildTree(T[] array) {
-            for (int i = size, j = 0; i < 2 * size; i++, j++) {
-                tree[i] = array[j];
-            }
-            for (int i = size - 1; i > 0; i--) {
-                tree[i] = monoid.combine(tree[i * 2], tree[i * 2 + 1]);
-            }
+    private void buildTree(int index, int start, int end) {
+        if (start == end) {
+            tree[index] = array[start];
+        } else {
+            int mid = start + (end - start) / 2;
+            int leftIndex = 2 * index + 1;
+            int rightIndex = 2 * index + 2;
+            buildTree(leftIndex, start, mid);
+            buildTree(rightIndex, mid + 1, end);
+            tree[index] = monoid.combine(tree[leftIndex], tree[rightIndex]);
         }
+    }
 
         public void update(int index, T value) {
             index += size;
@@ -51,4 +60,20 @@ public class SegmentTree<T> {
 
 
         }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        printTree(0, sb, "");
+        return sb.toString();
+    }
+
+    private void printTree(int index, StringBuilder sb, String prefix) {
+        if (index < tree.length) {
+            sb.append(prefix).append("|-- ").append(tree[index]).append("\n");
+            String childPrefix = prefix + "|   ";
+            printTree(2 * index + 1, sb, childPrefix);
+            printTree(2 * index + 2, sb, childPrefix);
+        }
+    }
 }

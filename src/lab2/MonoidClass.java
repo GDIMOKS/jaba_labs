@@ -4,12 +4,12 @@ import java.math.BigInteger;
 
 public class MonoidClass {
 
-    public interface Monoid<T> {
+    public interface IMonoid<T> {
         T identity(); // Нейтральный элемент
         T combine(T a, T b); // Бинарная операция
     }
 
-    public static class IntegerMaxMonoid implements Monoid<Integer> {
+    public static class IntegerMaxMonoid implements IMonoid<Integer> {
         @Override
         public Integer identity() {
             return 0; // Нейтральный элемент для максимума
@@ -21,7 +21,7 @@ public class MonoidClass {
         }
     }
 
-    public static class DoubleMinMonoid implements Monoid<Double> {
+    public static class DoubleMinMonoid implements IMonoid<Double> {
         @Override
         public Double identity() {
             return Double.MAX_VALUE; // Нейтральный элемент для минимума
@@ -33,32 +33,32 @@ public class MonoidClass {
         }
     }
 
-    public static class BigIntegerMultiplyMonoid implements Monoid<BigInteger> {
+    public static class BigIntegerMultiplyMonoid implements IMonoid<BigInteger> {
         @Override
         public BigInteger identity() {
-            return BigInteger.valueOf(1); // Нейтральный элемент для минимума
+            return BigInteger.valueOf(1); // Нейтральный элемент для умножения
         }
 
         @Override
         public BigInteger combine(BigInteger a, BigInteger b) {
-            return a.multiply(b); // Операция минимума
+            return a.multiply(b); // Операция умножения
         }
     }
 
-    public static class IntegerMultiplyMonoid implements Monoid<Integer> {
+    public static class IntegerMultiplyMonoid implements IMonoid<Integer> {
         @Override
         public Integer identity() {
-            return 1; // Нейтральный элемент для минимума
+            return 1; // Нейтральный элемент для умножения
         }
 
         @Override
         public Integer combine(Integer a, Integer b) {
-            return a * b; // Операция минимума
+            return a * b; // Операция умножения
         }
     }
 
     // Класс для моноида по умножению булевых значений
-    static class BooleanMultiplyMonoid implements Monoid<Boolean> {
+    static class BooleanMultiplyMonoid implements IMonoid<Boolean> {
         @Override
         public Boolean combine(Boolean a, Boolean b) {
             return a && b; // Операция умножения - логическое И
@@ -66,7 +66,7 @@ public class MonoidClass {
 
         @Override
         public Boolean identity() {
-            return true; // Единичный элемент - true
+            return true; // Нейтральный элемент - true
         }
     }
 }
