@@ -1,5 +1,5 @@
-package lab2;
-import lab2.RingClass.*;
+package lab2.part1;
+import lab2.part1.RingClass.*;
 
 import java.util.Arrays;
 

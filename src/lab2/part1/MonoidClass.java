@@ -1,4 +1,4 @@
-package lab2;
+package lab2.part1;
 
 import java.math.BigInteger;
 
@@ -58,7 +58,7 @@ public class MonoidClass {
     }
 
     // Класс для моноида по умножению булевых значений
-    static class BooleanMultiplyMonoid implements IMonoid<Boolean> {
+    public static class BooleanMultiplyMonoid implements IMonoid<Boolean> {
         @Override
         public Boolean combine(Boolean a, Boolean b) {
             return a && b; // Операция умножения - логическое И

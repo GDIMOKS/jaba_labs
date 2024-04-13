@@ -1,10 +1,10 @@
-package lab2;
+package lab2.part1;
 
 import java.util.List;
-import lab2.RingClass.*;
+import lab2.part1.RingClass.*;
 
 // Класс для полинома над кольцом
-class Polynomial<T> {
+public class Polynomial<T> {
     private final Ring<T> ring;
     private final List<T> coefficients;
 

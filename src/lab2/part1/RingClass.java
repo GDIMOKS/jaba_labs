@@ -1,11 +1,11 @@
-package lab2;
-import lab2.MonoidClass.*;
-import lab2.GroupClass.*;
+package lab2.part1;
+import lab2.part1.MonoidClass.*;
+import lab2.part1.GroupClass.*;
 
 public class RingClass {
 
     // Класс кольца
-    static class Ring<T> {
+    public static class Ring<T> {
         private IGroup<T> additiveGroup; // Группа по сложению
         private IMonoid<T> multiplyMonoid; // Моноид по умножению
 

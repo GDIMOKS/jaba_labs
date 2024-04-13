@@ -1,5 +1,5 @@
-package lab2;
-import lab2.GroupClass.*;
+package lab2.part1;
+import lab2.part1.GroupClass.*;
 
 public class PrefixSumClass<T> {
     private T[] prefixSum;

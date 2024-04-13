@@ -1,5 +1,5 @@
-package lab2;
-import lab2.MonoidClass.*;
+package lab2.part1;
+import lab2.part1.MonoidClass.*;
 
 public class FastBinaryAlgorithmClass {
     public static <T> T power(IMonoid<T> monoid, T base, int exponent) {
