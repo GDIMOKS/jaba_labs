@@ -10,7 +10,7 @@ public class RingClass {
         private Monoid<T> multiplyMonoid; // Моноид по умножению
 
         // Конструктор класса
-        public Ring(GroupClass.Group<T> additiveGroup, Monoid<T> multiplyMonoid) {
+        public Ring(Group<T> additiveGroup, Monoid<T> multiplyMonoid) {
             this.additiveGroup = additiveGroup;
             this.multiplyMonoid = multiplyMonoid;
         }
@@ -46,18 +46,14 @@ public class RingClass {
             System.out.println("Обратный элемент по сложению: " + this.negate(a));
             System.out.println("Нулевой элемент: " + this.zero());
             System.out.println("Единичный элемент: " + this.one());
+//            System.out.println("Кольцо: {" +
+//                    "Аддитивная группа: " + this.additiveGroup +
+//                    ", Мультипликативный моноид: " + this.multiplyMonoid +
+//                    '}');
             System.out.println();
         }
-    }
-
-    // Класс для кольца над логическими значениями
-    static class BooleanRing extends Ring<Boolean> {
-
-        // Конструктор класса
-        public BooleanRing()  {
-            super(new BooleanAdditiveGroup(), new BooleanMultiplyMonoid());
-        }
 
     }
+
 
 }

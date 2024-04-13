@@ -67,85 +67,66 @@ public class Main {
     }
 
     public static void Task1_3() {
-        // Создание кольца над целыми числами
+        // Кольцо над целыми числами
         Group<Integer> additiveGroup = new IntegerAdditiveGroup();
         Monoid<Integer> multiplyMonoid = new IntegerMultiplyMonoid();
         Ring<Integer> integerRing = new Ring<>(additiveGroup, multiplyMonoid);
 
-        // Примеры использования кольца над целыми числами
+        // Пример использования кольца над целыми числами
         int a = 5;
         int b = 3;
+        System.out.println("Пример использования кольца над целыми числами a =  " + a + ", b = " + b + ":");
         integerRing.print(a, b);
 
-        // Реализация кольца над логическими значениями
-        BooleanRing booleanRing = new BooleanRing();
+        // Кольцо над логическими значениями
+        Monoid<Boolean> booleanMonoid = new BooleanMultiplyMonoid();
+        Group<Boolean> booleanGroup = new BooleanAdditiveGroup();
+        Ring<Boolean> booleanRing = new Ring<>(booleanGroup, booleanMonoid);
 
-        // Примеры использования кольца над логическими значениями
-        boolean x = true, y = false;
+        boolean x = true;
+        boolean y = false;
+        System.out.println("Пример использования кольца над булевыми значениями x = " + x + ", y = " + y + ":");
         booleanRing.print(x, y);
 
         // Создание числовой матрицы
-        Integer[][] matrixData = {{1, 2}, {3, 4}};
-        MatrixClass<Integer> matrix = new MatrixClass<>(matrixData);
+        Integer[][] matrixDataInt = {{1, 2}, {3, 4}};
+        MatrixClass<Integer> matrixInt = new MatrixClass<>(integerRing, matrixDataInt);
+        // Создание булевой матрицы
+        Boolean[][] matrixDataBool = {{true, false}, {false, true}};
+        MatrixClass<Boolean> matrixBool = new MatrixClass<>(booleanRing, matrixDataBool);
 
-        // Создание полинома над матрицами
-        List<MatrixClass<Integer>> coefficients = new ArrayList<>();
-        coefficients.add(new MatrixClass<>(new Integer[][]{{1, 0}, {0, 1}})); // Матрица-коэффициент 1*x^0
-        coefficients.add(new MatrixClass<>(new Integer[][]{{0, 1}, {1, 0}})); // Матрица-коэффициент 2*x^1
-        coefficients.add(new MatrixClass<>(new Integer[][]{{1, 1}, {1, 1}})); // Матрица-коэффициент 3*x^2
-        Polynomial<MatrixClass<Integer>> polynomial = new Polynomial<>(coefficients);
-
-        // Печать результатов
-
-        // Вывод кольца над целыми числами
-        System.out.println("Кольцо над целыми числами:");
-        System.out.println("Сложение: " + additiveGroup.identity());
-        System.out.println("Умножение: " + multiplyMonoid.identity());
-        System.out.println("Обратный элемент по сложению: " + additiveGroup.inverse(5));
-        System.out.println("Нулевой элемент: " + additiveGroup.identity());
-        System.out.println("Единичный элемент: " + multiplyMonoid.identity());
-        
-        System.out.println();
         // Вывод числовой матрицы
-        System.out.println("Числовая матрица:");
-        for (int i = 0; i < matrix.getRowCount(); i++) {
-            for (int j = 0; j < matrix.getColumnCount(); j++) {
-                System.out.print(matrix.getElement(i, j) + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
+        System.out.println("Числовая матрица:\n" + matrixInt);
+        // Вывод булевой матрицы
+        System.out.println("Булевая матрица:\n" + matrixBool);
 
-        // Вывод полинома над матрицами
-        System.out.println("Полином над матрицами:");
-        for (int i = 0; i < polynomial.getDegree() + 1; i++) {
-            System.out.println("Коэффициент для степени " + i + ":");
-            MatrixClass<Integer> coefficientMatrix = polynomial.getCoefficient(i);
-            for (int row = 0; row < coefficientMatrix.getRowCount(); row++) {
-                for (int col = 0; col < coefficientMatrix.getColumnCount(); col++) {
-                    System.out.print(coefficientMatrix.getElement(row, col) + " ");
-                }
-                System.out.println();
-            }
-            System.out.println();
-        }
+        // Создание полинома над кольцами целых чисел
+        List<Integer> coefficientsInt = Arrays.asList(1, 2, 3); // Коэффициенты: 1 + 2x + 3x^2
+        Polynomial<Integer> integerPolynomial = new Polynomial<>(integerRing, coefficientsInt);
+        // Создание полинома над кольцами булевых значений
+        List<Boolean> coefficientsBool = Arrays.asList(true, false, true); // Коэффициенты: 1 + x^2
+        Polynomial<Boolean> boolPolynomial = new Polynomial<>(booleanRing, coefficientsBool);
+
+        // Вывод числового полинома
+        System.out.println("Числовой полином: " + integerPolynomial);
+        // Вывод булевого полинома
+        System.out.println("Булевый полином: " + boolPolynomial);
     }
 
     public static void Lab2_1() {
         Task1_1();
-
-        System.out.println();
+        System.out.println("\n////////////////////////////////////\n");
 
         Task1_2();
 
-        System.out.println();
+        System.out.println("\n////////////////////////////////////\n");
 
         Task1_3();
     }
 
     public static void  main(String[] args) {
         Lab2_1();
-//        System.out.println("привет мир");
+
     }
 }
 
