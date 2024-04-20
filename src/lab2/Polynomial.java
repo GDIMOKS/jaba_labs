@@ -1,26 +1,23 @@
 package lab2;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import lab2.RingClass.*;
 
 // Класс для полинома над кольцом
-public class Polynomial<T> {
-    private final Ring<T> ring;
-    private final List<T> coefficients;
+public class Polynomial<T> extends MatrixClass {
+    public List<T> coefficients;
 
-    public Polynomial(Ring<T> ring, List<T> coefficients) {
-        this.ring = ring;
-        this.coefficients = coefficients;
+    // Конструктор, который принимает объект класса Matrix
+    public Polynomial(MatrixClass matrix) {
+        super(matrix);
     }
 
-    // Метод для получения коэффициента по степени
-    public T getCoefficient(int degree) {
-        if (degree < coefficients.size()) {
-            return coefficients.get(degree);
-        } else {
-            return ring.zero(); // Нулевой коэффициент
-        }
+    public Polynomial(Ring<T> ring, T[][] data) {
+        super(ring, data);
     }
+
+
 
     // Метод для вывода полинома в виде строки
     @Override

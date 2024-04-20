@@ -109,16 +109,15 @@ public class Main {
         System.out.println("Булевая матрица:\n" + matrixBool);
 
         // Создание полинома над кольцами целых чисел
-        List<Integer> coefficientsInt = Arrays.asList(1, 2, 3); // Коэффициенты: 1 + 2x + 3x^2
-        Polynomial<Integer> integerPolynomial = new Polynomial<>(integerRing, coefficientsInt);
+        Polynomial<Integer> integerPolynomial = matrixInt.characteristicPolynomial();
+
         // Создание полинома над кольцами булевых значений
-        List<Boolean> coefficientsBool = Arrays.asList(true, false, true); // Коэффициенты: 1 + x^2
-        Polynomial<Boolean> boolPolynomial = new Polynomial<>(booleanRing, coefficientsBool);
+//        Polynomial<Boolean> boolPolynomial = matrixBool.characteristicPolynomial();
 
         // Вывод числового полинома
         System.out.println("Числовой полином: " + integerPolynomial);
         // Вывод булевого полинома
-        System.out.println("Булевый полином: " + boolPolynomial);
+//        System.out.println("Булевый полином: " + boolPolynomial);
     }
 
 
