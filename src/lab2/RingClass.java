@@ -53,6 +53,17 @@ public class RingClass {
             System.out.println();
         }
 
+        public T[][] zeroMatrix(int size) {
+            T[][] matrix = (T[][]) new Object[size][size];
+
+            for (int i = 0; i < size; i++) {
+                for (int j = 0; j < size; j++) {
+                    matrix[i][j] = this.zero();
+                }
+            }
+            return matrix;
+        }
+
     }
 
 

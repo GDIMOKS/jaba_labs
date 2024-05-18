@@ -8,6 +8,13 @@ public class MatrixClass<T> {
     protected Ring<T> ring;
     protected T[][] data; // Двумерный массив элементов кольца
 
+    protected enum Operation {
+        Subtract,
+        Add,
+        Multiply,
+        ScalarMultiply
+    }
+
     // Конструктор класса
     public MatrixClass(Ring<T> ring, T[][] data) {
         this.ring = ring;
@@ -28,87 +35,70 @@ public class MatrixClass<T> {
         return data[0].length;
     }
 
+    public T[][] getData() {
+        return data;
+    }
+
     public T getElement(int row, int col) {
         return data[row][col];
     }
 
-    // Метод для умножения матрицы на скаляр
-    public MatrixClass<T> multiplyByScalar(T scalar) {
+    private MatrixClass<T> matrixOperation(MatrixClass<T> other, Operation operationType, T scalar) {
         int rows = this.getRowCount();
         int cols = this.getColumnCount();
         T[][] result = (T[][]) new Object[rows][cols];
 
-
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                result[i][j] = ring.multiply(data[i][j], scalar);
+                switch (operationType) {
+                    case Add:
+                        result[i][j] = ring.add(this.data[i][j], other.data[i][j]);
+                        break;
+                    case Subtract:
+                        result[i][j] = ring.add(this.getElement(i, j), ring.negate(other.getElement(i, j)));
+                        break;
+                    case Multiply:
+                        result[i][j] = ring.zero();
+                        for (int k = 0; k < this.getColumnCount(); k++) {
+                            result[i][j] = ring.add(result[i][j], ring.multiply(this.data[i][k], other.data[k][j]));
+                        }
+                        break;
+                    case ScalarMultiply:
+                        result[i][j] = ring.multiply(this.data[i][j], scalar);
+                        break;
+                }
             }
         }
 
-        return new MatrixClass(ring, result);
+        return new MatrixClass<>(ring, result);
     }
 
+    // Метод сложения матриц
+    public MatrixClass<T> add(MatrixClass<T> other) {
+        return matrixOperation(other, Operation.Add, null);
+    }
 
     // Метод вычитания матрицы из текущей матрицы
     public MatrixClass<T> subtract(MatrixClass<T> other) {
-        int rows = this.getRowCount();
-        int cols = this.getColumnCount();
-        T[][] result = (T[][]) new Object[rows][cols];
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                result[i][j] = ring.add(this.getElement(i, j), ring.negate(other.getElement(i, j)));
-            }
-        }
-
-        return new MatrixClass(ring, result);
+        return matrixOperation(other, Operation.Subtract, null);
     }
 
     // Метод умножения матрицы на другую матрицу
     public MatrixClass<T> multiply(MatrixClass<T> other) {
-        int rowsA = this.getRowCount();
-        int colsA = this.getColumnCount();
-        int colsB = other.getColumnCount();
-
-        T[][] result = (T[][]) new Object[rowsA][colsB];
-
-        for (int i = 0; i < rowsA; i++) {
-            for (int j = 0; j < colsB; j++) {
-                T sum = ring.zero();
-                for (int k = 0; k < colsA; k++) {
-                    sum = ring.add(sum, ring.multiply(this.data[i][k], other.getElement(k, j)));
-                }
-                result[i][j] = sum;
-            }
-        }
-
-        return new MatrixClass(ring, result);
+        return matrixOperation(other, Operation.Multiply, null);
     }
 
-    // Метод для вычисления характеристического полинома
-    public Polynomial<T> characteristicPolynomial() {
-        int n = this.getRowCount(); // Получаем размерность матрицы
-        MatrixClass<T> singleMatrix = new MatrixClass(ring, identityMatrix(n)); // Создаем единичную матрицу той же размерности
-
-        // Создаем полином, начинаем с единичной матрицы
-        Polynomial<T> characteristicPoly = new Polynomial<T>(singleMatrix);
-
-        for (int i = 0; i < n; i++) {
-            // Вычитаем из матрицы диагональную матрицу, умноженную на собственное значение
-            MatrixClass<T> subtracted = this.subtract(this.multiplyByScalar(singleMatrix.data[i][i]));
-            // Умножаем текущий характеристический полином на полученную матрицу
-            characteristicPoly = new Polynomial(characteristicPoly.multiply(subtracted));
-        }
-        characteristicPoly.coefficients = (List<T>) Arrays.asList(characteristicPoly.data[0]);
-        return characteristicPoly;
+    // Метод для умножения матрицы на скаляр
+    public MatrixClass<T> scalarMultiply(T scalar) {
+        return matrixOperation(null, Operation.ScalarMultiply, scalar);
     }
 
     // Метод для создания единичной матрицы
-    private Object[][] identityMatrix(int n) {
-        Object[][] identity = new Object[n][n];
+    public T[][] identityMatrix(int n) {
+        T[][] identity = (T[][]) new Object[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                identity[i][j] = (i == j) ? 1 : 0; // Заполняем единицами главную диагональ, остальные нулями
+                identity[i][j] = (i == j) ? this.ring.one() : this.ring.zero();
             }
         }
         return identity;

@@ -1,6 +1,7 @@
 package lab2;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -97,27 +98,61 @@ public class Main {
         booleanRing.print(x, y);
 
         // Создание числовой матрицы
-        Integer[][] matrixDataInt = {{1, 2}, {3, 4}};
-        MatrixClass<Integer> matrixInt = new MatrixClass<>(integerRing, matrixDataInt);
+        Integer[][] matrixDataInt1 = {
+                {1, 2},
+                {3, 4}
+        };
+        MatrixClass<Integer> matrixInt1 = new MatrixClass<>(integerRing, matrixDataInt1);
         // Создание булевой матрицы
         Boolean[][] matrixDataBool = {{true, false}, {false, true}};
         MatrixClass<Boolean> matrixBool = new MatrixClass<>(booleanRing, matrixDataBool);
 
         // Вывод числовой матрицы
-        System.out.println("Числовая матрица:\n" + matrixInt);
+        System.out.println("Числовая матрица:\n" + matrixInt1);
         // Вывод булевой матрицы
         System.out.println("Булевая матрица:\n" + matrixBool);
 
-        // Создание полинома над кольцами целых чисел
-        Polynomial<Integer> integerPolynomial = matrixInt.characteristicPolynomial();
+        Integer[][] matrixDataInt2 = {
+                {5, 6},
+                {7, 8}
+        };
+        MatrixClass<Integer> matrixInt2 = new MatrixClass<>(integerRing, matrixDataInt2);
 
-        // Создание полинома над кольцами булевых значений
-//        Polynomial<Boolean> boolPolynomial = matrixBool.characteristicPolynomial();
+        Integer[][] matrixDataInt3 = {
+                {9, 10},
+                {11, 12}
+        };
+        MatrixClass<Integer> matrixInt3 = new MatrixClass<>(integerRing, matrixDataInt3);
 
-        // Вывод числового полинома
-        System.out.println("Числовой полином: " + integerPolynomial);
-        // Вывод булевого полинома
-//        System.out.println("Булевый полином: " + boolPolynomial);
+        List<MatrixClass<Integer>> coefficients1 = new ArrayList<>();
+        coefficients1.add(matrixInt1);
+        coefficients1.add(matrixInt2);
+        coefficients1.add(matrixInt3);
+
+        List<MatrixClass<Integer>> coefficients2 = new ArrayList<>();
+        coefficients2.add(matrixInt3);
+        coefficients2.add(matrixInt2);
+        coefficients2.add(matrixInt1);
+
+        Polynomial<Integer> poly1 = new Polynomial<>(integerRing, coefficients1);
+        Polynomial<Integer> poly2 = new Polynomial<>(integerRing, coefficients2);
+
+        Polynomial<Integer> sum = poly1.add(poly2);
+        Polynomial<Integer> difference = poly1.subtract(poly2);
+        Polynomial<Integer> product = poly1.multiply(poly2);
+
+        System.out.println("Сумма:");
+        sum.printCoefficients();
+        System.out.println();
+
+        System.out.println("Разность:");
+        difference.printCoefficients();
+        System.out.println();
+
+        System.out.println("Произведение:");
+        product.printCoefficients();
+        System.out.println();
+
     }
 
 
