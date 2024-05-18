@@ -128,11 +128,11 @@ public class Main {
         List<MatrixClass<Integer>> coefficients1 = new ArrayList<>();
         coefficients1.add(matrixInt1);
         coefficients1.add(matrixInt2);
-        coefficients1.add(matrixInt3);
+//        coefficients1.add(matrixInt3);
 
         // добавление коэффициентов для второго полинома
         List<MatrixClass<Integer>> coefficients2 = new ArrayList<>();
-        coefficients2.add(matrixInt3);
+//        coefficients2.add(matrixInt3);
         coefficients2.add(matrixInt2);
         coefficients2.add(matrixInt1);
 
@@ -146,15 +146,18 @@ public class Main {
         Polynomial<Integer> product = poly1.multiply(poly2);
 
         System.out.println("Сумма:");
-        sum.printCoefficients();
+        System.out.println(sum);
+//        sum.printCoefficients();
         System.out.println();
 
         System.out.println("Разность:");
-        difference.printCoefficients();
+//        difference.printCoefficients();
+        System.out.println(difference);
         System.out.println();
 
         System.out.println("Произведение:");
-        product.printCoefficients();
+//        product.printCoefficients();
+        System.out.println(product);
         System.out.println();
 
     }

@@ -1,7 +1,7 @@
 package lab2;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import lab2.RingClass.*;
 
@@ -89,6 +89,62 @@ public class Polynomial<T> {
                 System.out.println();
             }
         }
+    }
+
+    @Override
+    public String toString() {
+//        ArrayList<StringBuilder> coefficientsSb = new ArrayList<StringBuilder>();
+        StringBuilder sb = new StringBuilder();
+//
+//        for (int i = 0; i < coefficients.size(); i++) {
+//            MatrixClass<T> matrix = coefficients.get(i);
+//            StringBuilder coefficient = new StringBuilder();
+//
+//            for (int j = 0; j < matrix.getRowCount(); j++) {
+//                coefficient.append(Arrays.toString(matrix.data[j]));
+//                if (i != 0 && j == matrix.getRowCount() - 1)
+//                    coefficient.append("x^" + i);
+//                coefficient.append("\n");
+//            }
+//            coefficientsSb.add(coefficient);
+////            System.out.println(coefficient);
+//
+//
+//        }
+
+//        for (int i = coefficients.size()-1; i >= 0; i--) {
+//            sb.append(coefficientsSb.get(i));
+//            if (i != 0)
+//                sb.append(" + ");
+//        }
+
+
+
+
+
+        for (int i = 0; i < coefficients.getFirst().getRowCount(); i++) {
+            int maxLength = 0;
+            for (int j = 0; j < coefficients.size(); j++)
+                maxLength = Math.max(Arrays.toString(coefficients.get(j).getData()[i]).length(), maxLength);
+
+            for (int j = coefficients.size() -1; j >= 0; j--) {
+                T[][] data = coefficients.get(j).getData();
+                String stringData = Arrays.toString(data[i]);
+
+                sb.append(stringData + " ".repeat(maxLength-stringData.length()));
+
+                if (i >= coefficients.get(j).getRowCount() / 2) {
+                    if (j != 0) {
+                        sb.append(("* x^" + j + " + "));
+                    }
+                } else {
+                    sb.append("        ");
+                }
+
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }
 
