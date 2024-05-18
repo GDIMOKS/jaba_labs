@@ -118,15 +118,15 @@ public class Polynomial<T> {
 //                sb.append(" + ");
 //        }
 
+        int maxLength = 0;
 
-
+        for (int i = 0; i < coefficients.size(); i++)
+            for (int j = 0; j < coefficients.get(i).data.length; j++)
+                for (int k = 0; k < coefficients.get(i).data[j].length; k++)
+                    maxLength = Math.max(Arrays.toString(coefficients.get(i).getData()[k]).length(), maxLength);
 
 
         for (int i = 0; i < coefficients.getFirst().getRowCount(); i++) {
-            int maxLength = 0;
-            for (int j = 0; j < coefficients.size(); j++)
-                maxLength = Math.max(Arrays.toString(coefficients.get(j).getData()[i]).length(), maxLength);
-
             for (int j = coefficients.size() -1; j >= 0; j--) {
                 T[][] data = coefficients.get(j).getData();
                 String stringData = Arrays.toString(data[i]);
@@ -135,10 +135,10 @@ public class Polynomial<T> {
 
                 if (i >= coefficients.get(j).getRowCount() / 2) {
                     if (j != 0) {
-                        sb.append(("* x^" + j + " + "));
+                        sb.append((" * x^" + j + " + "));
                     }
                 } else {
-                    sb.append("        ");
+                    sb.append("         ");
                 }
 
             }
