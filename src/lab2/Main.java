@@ -124,19 +124,23 @@ public class Main {
         };
         MatrixClass<Integer> matrixInt3 = new MatrixClass<>(integerRing, matrixDataInt3);
 
+        // добавление коэффициентов для первого полинома
         List<MatrixClass<Integer>> coefficients1 = new ArrayList<>();
         coefficients1.add(matrixInt1);
         coefficients1.add(matrixInt2);
         coefficients1.add(matrixInt3);
 
+        // добавление коэффициентов для второго полинома
         List<MatrixClass<Integer>> coefficients2 = new ArrayList<>();
         coefficients2.add(matrixInt3);
         coefficients2.add(matrixInt2);
         coefficients2.add(matrixInt1);
 
+        // создание полиномов
         Polynomial<Integer> poly1 = new Polynomial<>(integerRing, coefficients1);
         Polynomial<Integer> poly2 = new Polynomial<>(integerRing, coefficients2);
 
+        // операции над полиномами
         Polynomial<Integer> sum = poly1.add(poly2);
         Polynomial<Integer> difference = poly1.subtract(poly2);
         Polynomial<Integer> product = poly1.multiply(poly2);
