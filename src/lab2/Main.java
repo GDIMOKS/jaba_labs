@@ -99,8 +99,9 @@ public class Main {
 
         // Создание числовой матрицы
         Integer[][] matrixDataInt1 = {
-                {1, 2},
-                {3, 4}
+                {1, 2, 3},
+                {3, 4, 5},
+                {5, 6, 7}
         };
         MatrixClass<Integer> matrixInt1 = new MatrixClass<>(integerRing, matrixDataInt1);
         // Создание булевой матрицы
@@ -113,14 +114,16 @@ public class Main {
         System.out.println("Булевая матрица:\n" + matrixBool);
 
         Integer[][] matrixDataInt2 = {
-                {5, 6},
-                {7, 8}
+                {5, 6, 7},
+                {7, 8, 9},
+                {9, 10, 11}
         };
         MatrixClass<Integer> matrixInt2 = new MatrixClass<>(integerRing, matrixDataInt2);
 
         Integer[][] matrixDataInt3 = {
-                {9, 10},
-                {11, 12}
+                {9, 10, 11},
+                {11, 12, 13},
+                {13, 14, 15}
         };
         MatrixClass<Integer> matrixInt3 = new MatrixClass<>(integerRing, matrixDataInt3);
 
@@ -128,17 +131,22 @@ public class Main {
         List<MatrixClass<Integer>> coefficients1 = new ArrayList<>();
         coefficients1.add(matrixInt1);
         coefficients1.add(matrixInt2);
-//        coefficients1.add(matrixInt3);
+        coefficients1.add(matrixInt3);
 
         // добавление коэффициентов для второго полинома
         List<MatrixClass<Integer>> coefficients2 = new ArrayList<>();
-//        coefficients2.add(matrixInt3);
+        coefficients2.add(matrixInt3);
         coefficients2.add(matrixInt2);
         coefficients2.add(matrixInt1);
 
         // создание полиномов
         Polynomial<Integer> poly1 = new Polynomial<>(integerRing, coefficients1);
         Polynomial<Integer> poly2 = new Polynomial<>(integerRing, coefficients2);
+
+        // вывод созданных полиномов
+        System.out.println("Первый полином:\n" + poly1);
+        System.out.println("Второй полином:\n" + poly2);
+
 
         // операции над полиномами
         Polynomial<Integer> sum = poly1.add(poly2);
@@ -147,18 +155,12 @@ public class Main {
 
         System.out.println("Сумма:");
         System.out.println(sum);
-//        sum.printCoefficients();
-        System.out.println();
 
         System.out.println("Разность:");
-//        difference.printCoefficients();
         System.out.println(difference);
-        System.out.println();
 
         System.out.println("Произведение:");
-//        product.printCoefficients();
         System.out.println(product);
-        System.out.println();
 
     }
 

@@ -93,30 +93,7 @@ public class Polynomial<T> {
 
     @Override
     public String toString() {
-//        ArrayList<StringBuilder> coefficientsSb = new ArrayList<StringBuilder>();
         StringBuilder sb = new StringBuilder();
-//
-//        for (int i = 0; i < coefficients.size(); i++) {
-//            MatrixClass<T> matrix = coefficients.get(i);
-//            StringBuilder coefficient = new StringBuilder();
-//
-//            for (int j = 0; j < matrix.getRowCount(); j++) {
-//                coefficient.append(Arrays.toString(matrix.data[j]));
-//                if (i != 0 && j == matrix.getRowCount() - 1)
-//                    coefficient.append("x^" + i);
-//                coefficient.append("\n");
-//            }
-//            coefficientsSb.add(coefficient);
-////            System.out.println(coefficient);
-//
-//
-//        }
-
-//        for (int i = coefficients.size()-1; i >= 0; i--) {
-//            sb.append(coefficientsSb.get(i));
-//            if (i != 0)
-//                sb.append(" + ");
-//        }
 
         int maxLength = 0;
 
@@ -133,7 +110,7 @@ public class Polynomial<T> {
 
                 sb.append(stringData + " ".repeat(maxLength-stringData.length()));
 
-                if (i >= coefficients.get(j).getRowCount() / 2) {
+                if (i == coefficients.get(j).getRowCount() / 2) {
                     if (j != 0) {
                         sb.append((" * x^" + j + " + "));
                     }
