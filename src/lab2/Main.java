@@ -99,9 +99,8 @@ public class Main {
 
         // Создание числовой матрицы
         Integer[][] matrixDataInt1 = {
-                {1, 2, 3},
-                {3, 4, 5},
-                {5, 6, 7}
+                {1, 2},
+                {3, 4}
         };
         MatrixClass<Integer> matrixInt1 = new MatrixClass<>(integerRing, matrixDataInt1);
         // Создание булевой матрицы
@@ -114,9 +113,8 @@ public class Main {
         System.out.println("Булевая матрица:\n" + matrixBool);
 
         Integer[][] matrixDataInt2 = {
-                {5, 6, 7},
-                {7, 8, 9},
-                {9, 10, 11}
+                {5, 6},
+                {7, 8}
         };
         MatrixClass<Integer> matrixInt2 = new MatrixClass<>(integerRing, matrixDataInt2);
 
@@ -131,36 +129,55 @@ public class Main {
         List<MatrixClass<Integer>> coefficients1 = new ArrayList<>();
         coefficients1.add(matrixInt1);
         coefficients1.add(matrixInt2);
-        coefficients1.add(matrixInt3);
+//        coefficients1.add(matrixInt3);
 
         // добавление коэффициентов для второго полинома
         List<MatrixClass<Integer>> coefficients2 = new ArrayList<>();
-        coefficients2.add(matrixInt3);
+//        coefficients2.add(matrixInt3);
         coefficients2.add(matrixInt2);
         coefficients2.add(matrixInt1);
 
         // создание полиномов
-//        Polynomial<Integer> poly1 = new Polynomial<>(integerRing, coefficients1);
-//        Polynomial<Integer> poly2 = new Polynomial<>(integerRing, coefficients2);
-//
-//        // вывод созданных полиномов
-//        System.out.println("Первый полином:\n" + poly1);
-//        System.out.println("Второй полином:\n" + poly2);
-//
-//
-//        // операции над полиномами
-//        Polynomial<Integer> sum = poly1.add(poly2);
-//        Polynomial<Integer> difference = poly1.subtract(poly2);
-//        Polynomial<Integer> product = poly1.multiply(poly2);
-//
-//        System.out.println("Сумма:");
-//        System.out.println(sum);
-//
-//        System.out.println("Разность:");
-//        System.out.println(difference);
-//
-//        System.out.println("Произведение:");
-//        System.out.println(product);
+        Polynomial<MatrixClass<Integer>> poly1 = new Polynomial<>(matrixInt1.ring, coefficients1);
+        Polynomial<MatrixClass<Integer>> poly2 = new Polynomial<>(matrixInt2.ring, coefficients2);
+
+        Polynomial<Integer> poly3 = new Polynomial<>(integerRing, Arrays.asList(1,2,3,4) );
+        Polynomial<Integer> poly4 = new Polynomial<>(integerRing, Arrays.asList(5,6,7,8));
+
+        // вывод созданных полиномов
+        System.out.println("Первый полином:\n" + poly1);
+        System.out.println("Второй полином:\n" + poly2);
+
+        // операции над полиномами
+        Polynomial<MatrixClass<Integer>> sum = poly1.add(poly2);
+        Polynomial<MatrixClass<Integer>> difference = poly1.subtract(poly2);
+        Polynomial<MatrixClass<Integer>> product = poly1.multiply(poly2);
+
+        System.out.println("Сумма:");
+        System.out.println(sum);
+
+        System.out.println("Разность:");
+        System.out.println(difference);
+
+        System.out.println("Произведение:");
+        System.out.println(product);
+
+        System.out.println("Третий полином:\n" + poly3);
+        System.out.println("Четвертый полином:\n" + poly4);
+
+        // операции над полиномами
+        Polynomial<Integer> sum2 = poly3.add(poly4);
+        Polynomial<Integer> difference2 = poly3.subtract(poly4);
+        Polynomial<Integer> product2 = poly3.multiply(poly4);
+
+        System.out.println("Сумма:");
+        System.out.println(sum2);
+
+        System.out.println("Разность:");
+        System.out.println(difference2);
+
+        System.out.println("Произведение:");
+        System.out.println(product2);
 
     }
 
