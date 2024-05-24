@@ -79,4 +79,35 @@ public class GroupClass {
             return !a; // Обратный элемент - отрицание
         }
     }
+//
+//    public static class IntegerMatrixAdditiveGroup implements IGroup<MatrixClass<Integer>> {
+//
+//        private int size;
+//
+//        public IntegerMatrixAdditiveGroup(int size) {
+//            this.size = size;
+//        }
+//
+//        @Override
+//        public MatrixClass<Integer> inverse(MatrixClass<Integer> a) {
+//            return null;
+//        }
+//
+//        @Override
+//        public MatrixClass<Integer> identity() {
+//            Integer[][] identity = new Integer[size][size];
+//            for (int i = 0; i < size; i++) {
+//                for (int j = 0; j < size; j++) {
+//                    identity[i][j] = (i == j) ? 1 : 0;
+//                }
+//            }
+//            return identity;
+//        }
+//
+//        @Override
+//        public MatrixClass<Integer> combine(MatrixClass<Integer> a, MatrixClass<Integer> b) {
+//            return null;
+//        }
+//    }
+
 }

@@ -73,4 +73,19 @@ public class MonoidClass {
             return true; // Нейтральный элемент - true
         }
     }
+
+//    public static class IntegerMatrixMultiplyMonoid implements IMonoid<MatrixClass<Integer>> {
+//
+//        public IntegerMatrixMultiplyMonoid(int size) {}
+//
+//        @Override
+//        public MatrixClass<Integer> identity() {
+//            return null;
+//        }
+//
+//        @Override
+//        public MatrixClass<Integer> combine(MatrixClass<Integer> a, MatrixClass<Integer> b) {
+//            return null;
+//        }
+//    }
 }

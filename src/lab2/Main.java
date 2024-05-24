@@ -80,7 +80,7 @@ public class Main {
         // Кольцо над целыми числами
         GroupClass.IGroup<Integer> additiveGroup = new GroupClass.IntegerAdditiveGroup();
         MonoidClass.IMonoid<Integer> multiplyMonoid = new MonoidClass.IntegerMultiplyMonoid();
-        RingClass.Ring<Integer> integerRing = new RingClass.Ring<>(additiveGroup, multiplyMonoid);
+        RingClass.Ring<Integer> integerRing = new RingClass.StandardRing<>(additiveGroup, multiplyMonoid);
 
         int a = 5;
         int b = 3;
@@ -90,7 +90,7 @@ public class Main {
         // Кольцо над логическими значениями
         MonoidClass.IMonoid<Boolean> booleanMonoid = new MonoidClass.BooleanMultiplyMonoid();
         GroupClass.IGroup<Boolean> booleanGroup = new GroupClass.BooleanAdditiveGroup();
-        RingClass.Ring<Boolean> booleanRing = new RingClass.Ring<>(booleanGroup, booleanMonoid);
+        RingClass.Ring<Boolean> booleanRing = new RingClass.StandardRing<>(booleanGroup, booleanMonoid);
 
         boolean x = true;
         boolean y = false;
@@ -140,27 +140,27 @@ public class Main {
         coefficients2.add(matrixInt1);
 
         // создание полиномов
-        Polynomial<Integer> poly1 = new Polynomial<>(integerRing, coefficients1);
-        Polynomial<Integer> poly2 = new Polynomial<>(integerRing, coefficients2);
-
-        // вывод созданных полиномов
-        System.out.println("Первый полином:\n" + poly1);
-        System.out.println("Второй полином:\n" + poly2);
-
-
-        // операции над полиномами
-        Polynomial<Integer> sum = poly1.add(poly2);
-        Polynomial<Integer> difference = poly1.subtract(poly2);
-        Polynomial<Integer> product = poly1.multiply(poly2);
-
-        System.out.println("Сумма:");
-        System.out.println(sum);
-
-        System.out.println("Разность:");
-        System.out.println(difference);
-
-        System.out.println("Произведение:");
-        System.out.println(product);
+//        Polynomial<Integer> poly1 = new Polynomial<>(integerRing, coefficients1);
+//        Polynomial<Integer> poly2 = new Polynomial<>(integerRing, coefficients2);
+//
+//        // вывод созданных полиномов
+//        System.out.println("Первый полином:\n" + poly1);
+//        System.out.println("Второй полином:\n" + poly2);
+//
+//
+//        // операции над полиномами
+//        Polynomial<Integer> sum = poly1.add(poly2);
+//        Polynomial<Integer> difference = poly1.subtract(poly2);
+//        Polynomial<Integer> product = poly1.multiply(poly2);
+//
+//        System.out.println("Сумма:");
+//        System.out.println(sum);
+//
+//        System.out.println("Разность:");
+//        System.out.println(difference);
+//
+//        System.out.println("Произведение:");
+//        System.out.println(product);
 
     }
 
