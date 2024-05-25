@@ -1,10 +1,17 @@
 package lab3;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 public class Parser {
     private String input;
     private int pos;
+    private Map<String,ConstantNode> availableConstants = Map.of("E", new ConstantNode(Math.E),
+            "PI", new ConstantNode(Math.PI),
+            "PHI",new ConstantNode(1.618033988749895)
+    );
 
     public Node parse(String input) {
         this.input = input.replaceAll("\\s+", ""); // Удаление всех пробелов
@@ -106,12 +113,15 @@ public class Parser {
             pos++;
         }
         String name = input.substring(startPos, pos);
-        return switch (name) {
-            case "E" -> new ConstantNode(Math.E);
-            case "PI" -> new ConstantNode(Math.PI);
-            case "PHI" -> new ConstantNode(1.618033988749895); // Золотое сечение
-            default -> throw new IllegalArgumentException("Неизвестная константа " + name);
-        };
+
+        Collection<String> collection= availableConstants.keySet();
+        for (String key : collection) {
+            if (key.equals(name)) {
+                return availableConstants.get(key);
+            }
+        }
+
+        throw new IllegalArgumentException("Неизвестная константа");
     }
 
     private Node[] parseArguments() {
