@@ -13,6 +13,15 @@ public class BinaryOperationNode extends Node {
         this.operator = operator;
     }
 
+    public Node getLeft() {
+        return left;
+    }
+    public Node getRight() {
+        return right;
+    }
+    public char getOperator() {
+        return operator;
+    }
     @Override
     public double evaluate(Map<String, Double> variables) {
         double leftValue = left.evaluate(variables);

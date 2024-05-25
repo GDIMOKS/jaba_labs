@@ -12,7 +12,7 @@ public class Main {
         Node f2 = parser.parse("3 + 5 * 2");
         System.out.println(f2.evaluate(Map.of()));
 
-        Node f3 = parser.parse("cos(0)");
+        Node f3 = parser.parse("pow(25, -1)");
         System.out.println(f3.evaluate(Map.of()));
     }
 }

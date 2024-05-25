@@ -1,5 +1,7 @@
 package lab3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Parser {
@@ -115,7 +117,7 @@ public class Parser {
     }
 
     private Node[] parseArguments() {
-        Stack<Node> arguments = new Stack<>();
+        List<Node> arguments = new ArrayList<>();
         while (pos < input.length() && input.charAt(pos) != ')') {
             arguments.add(parseExpression());
             if (pos < input.length() && input.charAt(pos) == ',') {

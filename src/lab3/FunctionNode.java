@@ -11,6 +11,12 @@ public class FunctionNode extends Node {
         this.arguments = arguments;
     }
 
+    public String getFunctionName() {
+        return functionName;
+    }
+    public Node[] getArguments() {
+        return arguments;
+    }
     @Override
     public double evaluate(Map<String, Double> variables) {
         switch (functionName) {

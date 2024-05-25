@@ -11,6 +11,12 @@ public class UnaryOperationNode extends Node {
         this.operator = operator;
     }
 
+    public Node getOperand() {
+        return operand;
+    }
+    public char getOperator() {
+        return operator;
+    }
     @Override
     public double evaluate(Map<String, Double> variables) {
         double operandValue = operand.evaluate(variables);
