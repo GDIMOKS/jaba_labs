@@ -12,7 +12,7 @@ public class Main {
         Task1();
         System.out.println("\n////////////////////////////////////\n");
         Task2();
-//        System.out.println("\n////////////////////////////////////\n");
+        System.out.println("\n////////////////////////////////////\n");
 //        Task3();
     }
 
@@ -41,16 +41,16 @@ public class Main {
         double resultF = f.evaluate(variables);
         double resultG = g.evaluate(variables);
 
-        System.out.println("Original f:");
+        System.out.println("Выражение f:");
         System.out.println(f);
 
-        System.out.println("Simplified g:");
+        System.out.println("Упрощенное выражение g:");
         System.out.println(g);
 
-        System.out.println("Result of f:");
+        System.out.println("Результат выражения f:");
         System.out.println(resultF);
 
-        System.out.println("Result of g:");
+        System.out.println("Результат упрощенного выражения g:");
         System.out.println(resultG);
     }
 
