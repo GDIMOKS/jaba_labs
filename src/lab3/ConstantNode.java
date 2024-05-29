@@ -2,7 +2,7 @@ package lab3;
 
 import java.util.Map;
 
-public class ConstantNode extends Node {
+public class ConstantNode implements Node {
     private final double value;
 
     ConstantNode(double value) {

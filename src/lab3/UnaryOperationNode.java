@@ -2,7 +2,7 @@ package lab3;
 
 import java.util.Map;
 
-public class UnaryOperationNode extends Node {
+public class UnaryOperationNode implements Node {
     private final Node operand;
     private final char operator;
 
@@ -24,5 +24,10 @@ public class UnaryOperationNode extends Node {
             case '-': return -operandValue;
             default: throw new IllegalArgumentException("Неизвестный оператор: " + operator);
         }
+    }
+
+    @Override
+    public String toString() {
+        return operator + operand.toString();
     }
 }

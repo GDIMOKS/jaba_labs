@@ -1,9 +1,7 @@
 package lab3;
 
-import java.util.HashMap;
 import java.util.Map;
 
-//import static lab3.Simplifier.simplify;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +11,7 @@ public class Main {
     public static void Lab3() {
         Task1();
         System.out.println("\n////////////////////////////////////\n");
-//        Task2();
+        Task2();
 //        System.out.println("\n////////////////////////////////////\n");
 //        Task3();
     }
@@ -36,14 +34,24 @@ public class Main {
 
     public static void Task2() {
         Parser parser = new Parser();
-        // Исходное выражение
-        Node f = parser.parse("(x + 1) * (x + 1)");
-        System.out.println(f.evaluate(Map.of("x", 1.0)));
-        // Упрощенное выражение с удаленными дубликатами подвыражений
-//        Node g = simplify(f);
+        Node f = parser.parse("(x + 1) * (x + 1) + (x + 1) * 3 + (x + 1) * (x + 1)");
+        Node g = Simplifier.simplify(f);
 
-        // Вывод результата упрощенного выражения
-//        System.out.println(g.evaluate(Map.of("x", 1.0)));
+        Map<String, Double> variables = Map.of("x", 1.0);
+        double resultF = f.evaluate(variables);
+        double resultG = g.evaluate(variables);
+
+        System.out.println("Original f:");
+        System.out.println(f);
+
+        System.out.println("Simplified g:");
+        System.out.println(g);
+
+        System.out.println("Result of f:");
+        System.out.println(resultF);
+
+        System.out.println("Result of g:");
+        System.out.println(resultG);
     }
 
     public static void Task3() {

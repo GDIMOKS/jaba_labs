@@ -2,7 +2,7 @@ package lab3;
 
 import java.util.Map;
 
-public class VariableNode extends Node {
+public class VariableNode implements Node {
     private final String name;
 
     VariableNode(String name) {
@@ -15,5 +15,10 @@ public class VariableNode extends Node {
             return variables.get(name);
         }
         throw new IllegalArgumentException("Variable " + name + " not defined");
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

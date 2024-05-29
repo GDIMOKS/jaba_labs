@@ -2,7 +2,7 @@ package lab3;
 
 import java.util.Map;
 
-public class FunctionNode extends Node {
+public class FunctionNode implements Node {
     private final String functionName;
     private final Node[] arguments;
 
@@ -27,5 +27,23 @@ public class FunctionNode extends Node {
             default:
                 throw new IllegalArgumentException("Неизвестная функция: " + functionName);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(functionName).append("(");
+        for (int i = 0; i < arguments.length; i++) {
+            sb.append(arguments[i].toString());
+            if (i < arguments.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append(")");
+        return sb.toString();
+    }
+
+    public String getName() {
+        return functionName;
     }
 }
