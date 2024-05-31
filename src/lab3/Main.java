@@ -9,11 +9,11 @@ public class Main {
     }
 
     public static void Lab3() {
-        Task1();
-        System.out.println("\n////////////////////////////////////\n");
-        Task2();
-        System.out.println("\n////////////////////////////////////\n");
-//        Task3();
+//        Task1();
+//        System.out.println("\n////////////////////////////////////\n");
+//        Task2();
+//        System.out.println("\n////////////////////////////////////\n");
+        Task3();
     }
 
     public static void Task1() {
@@ -55,8 +55,26 @@ public class Main {
     }
 
     public static void Task3() {
+        Parser parser = new Parser();
+        Node f = parser.parse("(x + 1) * (x + 1) + (x + 1) * 3 + (x + 1) * (x + 1)");
+        Node g = Simplifier.simplify(f);
 
+        Map<String, Double> variables = Map.of("x", 2.0);
 
+        double resultF = f.evaluate(variables);
+        double resultG = g.evaluate(variables);
+
+        System.out.println("Вычисленное значение f: " + resultF);
+        System.out.println("Вычисленное значение g: " + resultG);
+
+        DotGenerator dotF = new DotGenerator(f);
+        DotGenerator dotG = new DotGenerator(g);
+
+        System.out.println("DOT-граф f:");
+        System.out.println(dotF);
+
+        System.out.println("DOT-граф g:");
+        System.out.println(dotG);
     }
 
 }

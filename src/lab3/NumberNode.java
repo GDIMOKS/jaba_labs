@@ -9,6 +9,9 @@ public class NumberNode implements Node {
         this.value = value;
     }
 
+    public double getValue() {
+        return value;
+    }
     @Override
     public double evaluate(Map<String, Double> variables) {
         return value;

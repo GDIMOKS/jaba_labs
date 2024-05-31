@@ -9,6 +9,10 @@ public class VariableNode implements Node {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public double evaluate(Map<String, Double> variables) {
         if (variables.containsKey(name)) {

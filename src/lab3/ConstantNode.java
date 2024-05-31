@@ -8,7 +8,9 @@ public class ConstantNode implements Node {
     ConstantNode(double value) {
         this.value = value;
     }
-
+    public double getValue() {
+        return value;
+    }
     @Override
     public double evaluate(Map<String, Double> variables) {
         return value;
