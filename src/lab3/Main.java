@@ -56,7 +56,7 @@ public class Main {
 
     public static void Task3() {
         Parser parser = new Parser();
-        Node f = parser.parse("(x + 1) * (x + 1) + (x + 1) * 3 + (x + 1) * (x + 1)");
+        Node f = parser.parse("(x + 1) * (x + 1)");
         Node g = Simplifier.simplify(f);
 
         Map<String, Double> variables = Map.of("x", 2.0);

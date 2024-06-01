@@ -10,8 +10,8 @@ public class DotGenerator {
 
     // Конструктор, который принимает корневой узел дерева и генерирует его DOT представление
     public DotGenerator(Node root) {
-        int counter = 0;
-        generateDot(root, counter);
+        IdGenerator idGen = new IdGenerator();
+        generateDot(root, idGen);
     }
 
     // Метод для получения метки узла в зависимости от его типа
@@ -27,7 +27,7 @@ public class DotGenerator {
     }
 
     // Метод для рекурсивного генерации DOT представления узла и его потомков
-    private String generateDot(Node node, int counter) {
+    private String generateDot(Node node, IdGenerator counter) {
         if (node == null) {
             return null;
         }
@@ -38,7 +38,7 @@ public class DotGenerator {
         }
 
         // Генерируем новый идентификатор для узла
-        String nodeId = "n" + counter++;
+        String nodeId = counter.nextId();
         // Сохраняем соответствие узла и его идентификатора
         nodeMap.put(node, nodeId);
         // Создаем новый DotNode с меткой узла
