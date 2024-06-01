@@ -1,14 +1,15 @@
 package lab3;
 
+import java.io.IOException;
 import java.util.Map;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Lab3();
     }
 
-    public static void Lab3() {
+    public static void Lab3() throws IOException, InterruptedException {
 //        Task1();
 //        System.out.println("\n////////////////////////////////////\n");
 //        Task2();
@@ -54,7 +55,7 @@ public class Main {
         System.out.println(resultG);
     }
 
-    public static void Task3() {
+    public static void Task3() throws IOException, InterruptedException {
         Parser parser = new Parser();
         Node f = parser.parse("(x + 1) * (x + 1)");
         Node g = Simplifier.simplify(f);
@@ -75,6 +76,10 @@ public class Main {
 
         System.out.println("DOT-граф g:");
         System.out.println(dotG);
+
+        dotF.generateImage("expression.png");
+        dotG.generateImage("simplified_expression.png");
+        DotGenerator.displayImages("expression.png", "simplified_expression.png");
     }
 
 }
