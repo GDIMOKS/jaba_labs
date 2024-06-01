@@ -57,7 +57,7 @@ public class Main {
 
     public static void Task3() throws IOException, InterruptedException {
         Parser parser = new Parser();
-        Node f = parser.parse("(x + 1) * (x + 1)");
+        Node f = parser.parse("(x + 1) * (x + 1) + (x + 1) * 3 + (x + 1) * (x + 1)");
         Node g = Simplifier.simplify(f);
 
         Map<String, Double> variables = Map.of("x", 2.0);
@@ -77,9 +77,9 @@ public class Main {
         System.out.println("DOT-граф g:");
         System.out.println(dotG);
 
-        dotF.generateImage("expression.png");
-        dotG.generateImage("simplified_expression.png");
-        DotGenerator.displayImages("expression.png", "simplified_expression.png");
+        GraphVisualizer.generateImage(dotF, "expression.png");
+        GraphVisualizer.generateImage(dotG,"simplified_expression.png");
+        GraphVisualizer.displayImages("expression.png", "simplified_expression.png");
     }
 
 }
