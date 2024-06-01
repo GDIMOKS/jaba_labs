@@ -13,6 +13,7 @@ out/
 .springBeans
 .sts4-cache
 bin/
+!**/Graphviz-11.0.0-win64/**/bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
